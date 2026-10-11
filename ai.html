@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>100 AI Concepts Encyclopedia — The Full Library</title>
+<meta name="description" content="The full 100-concept encyclopedia. 8 categories, plain-English explanations, real-world examples. Free to read.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="100 AI Concepts Encyclopedia — The Full Library">
+<meta property="og:description" content="The full 100-concept encyclopedia. 8 categories, plain-English explanations, real-world examples.">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#05060a;--bg-2:#0b0d18;--panel:#101327;--panel-2:#161a30;
+  --text:#e9ecf5;--muted:#8b92ad;--line:rgba(255,255,255,.08);
+  --accent:#7c5cff;--accent-2:#22d3ee;--accent-3:#f472b6;--gold:#fbbf24;
+  --cta:#fbbf24;--cta-glow:#f59e0b;--cta-text:#1a0a00;
+  --grad-1:linear-gradient(135deg,#7c5cff 0%,#22d3ee 50%,#f472b6 100%);
+  --grad-cta:linear-gradient(135deg,#fbbf24 0%,#f59e0b 50%,#f97316 100%);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--cta);color:var(--cta-text)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+
+.bg-mesh{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(ellipse 80% 60% at 10% 0%,rgba(124,92,255,.22),transparent 60%),
+  radial-gradient(ellipse 60% 50% at 90% 10%,rgba(34,211,238,.16),transparent 60%),
+  radial-gradient(ellipse 60% 50% at 50% 100%,rgba(244,114,182,.16),transparent 60%),
+  var(--bg)}
+.bg-grid{position:fixed;inset:0;z-index:-1;background-image:
+  linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,#000 30%,transparent 80%)}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(5,6,10,.75);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}
+.brand-mark{width:32px;height:32px;border-radius:8px;background:var(--grad-1);display:grid;place-items:center;font-size:14px;font-weight:900;color:#fff;box-shadow:0 4px 20px rgba(124,92,255,.4)}
+.nav-cta-mini{background:var(--grad-cta);color:var(--cta-text);padding:10px 18px;border-radius:10px;font-weight:800;font-size:14px;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 20px rgba(251,191,36,.4)}
+
+.btn-cta{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  padding:18px 32px;border-radius:16px;font-weight:900;font-size:17px;letter-spacing:-.01em;
+  cursor:pointer;border:none;font-family:inherit;color:var(--cta-text);
+  background:var(--grad-cta);
+  box-shadow:0 0 0 1px rgba(255,255,255,.2) inset,0 10px 30px rgba(251,191,36,.4),0 0 60px rgba(251,191,36,.3);
+  transition:all .25s;white-space:nowrap;
+}
+.btn-cta:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 0 0 1px rgba(255,255,255,.3) inset,0 20px 50px rgba(251,191,36,.6),0 0 100px rgba(251,191,36,.5)}
+.btn-cta .price{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:900}
+
+.hero{position:relative;padding:120px 0 60px;overflow:hidden}
+.hero-inner{position:relative;z-index:2;text-align:center;max-width:780px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(124,92,255,.1);border:1px solid rgba(124,92,255,.3);padding:8px 14px;border-radius:100px;font-size:13px;font-weight:600;color:#b9aaff;margin-bottom:20px}
+.eyebrow .dot{width:6px;height:6px;background:var(--accent);border-radius:50%;box-shadow:0 0 10px var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,6vw,68px);line-height:1.05;letter-spacing:-.03em;font-weight:800;margin-bottom:20px}
+h1 .grad{background:var(--grad-1);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 200%;animation:gradShift 6s ease infinite}
+@keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero p{font-size:18px;color:var(--muted);max-width:620px;margin:0 auto 28px}
+
+section{padding:80px 0;position:relative}
+.section-head{text-align:center;max-width:720px;margin:0 auto 50px}
+.section-tag{display:inline-block;background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);color:#67e8f9;padding:6px 14px;border-radius:100px;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:12px}
+h2 .grad{background:var(--grad-1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.section-head p{font-size:17px;color:var(--muted)}
+
+.index{background:var(--bg-2);position:relative}
+.sticky-toc{position:sticky;top:64px;background:rgba(11,13,24,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:40px;z-index:10}
+.toc-label{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:12px;padding:0 8px;display:flex;align-items:center;justify-content:space-between}
+.toc-label .count{font-family:'JetBrains Mono',monospace;color:var(--accent-2)}
+.toc-items{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+.toc-items::-webkit-scrollbar{display:none}
+.toc-items a{flex-shrink:0;padding:8px 14px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;white-space:nowrap;display:inline-flex;align-items:center;gap:6px}
+.toc-items a:hover{background:rgba(124,92,255,.15);border-color:rgba(124,92,255,.4);color:var(--text)}
+
+.cat-section{margin-bottom:60px;scroll-margin-top:140px}
+.cat-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.cat-header-icon{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;font-size:28px;flex-shrink:0;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.cat-header h3{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.02em;flex:1;min-width:200px}
+.cat-header p{color:var(--muted);font-size:14px;margin-top:4px;width:100%}
+.cat-header .range{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);background:rgba(255,255,255,.04);padding:8px 14px;border-radius:8px;border:1px solid var(--line);white-space:nowrap}
+
+.concepts{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.concept{background:linear-gradient(135deg,var(--panel) 0%,var(--panel-2) 100%);border:1px solid var(--line);border-radius:18px;padding:24px;transition:all .3s;position:relative;overflow:hidden}
+.concept::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad-1);transform:scaleY(0);transform-origin:top;transition:transform .35s}
+.concept:hover{transform:translateY(-4px);border-color:rgba(124,92,255,.35);box-shadow:0 16px 40px -12px rgba(124,92,255,.2)}
+.concept:hover::before{transform:scaleY(1)}
+.concept-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.concept-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-2);font-weight:600;letter-spacing:.1em;background:rgba(34,211,238,.08);padding:4px 10px;border-radius:6px;border:1px solid rgba(34,211,238,.15)}
+.concept-icon{width:36px;height:36px;border-radius:10px;background:rgba(124,92,255,.1);display:grid;place-items:center;font-size:18px;flex-shrink:0}
+.concept h4{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.01em;line-height:1.3}
+.concept .def{color:var(--text);font-size:14px;line-height:1.6;margin-bottom:12px}
+.concept .why{background:rgba(124,92,255,.05);border-left:2px solid var(--accent);padding:10px 14px;border-radius:0 8px 8px 0;font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:10px}
+.concept .why strong{color:var(--accent-2);font-weight:700;display:block;margin-bottom:3px;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.concept .example{font-size:12.5px;color:var(--muted);font-style:italic;padding-top:10px;border-top:1px dashed var(--line)}
+.concept .example::before{content:"💡 ";font-style:normal}
+
+.cta-banner{margin:60px 0;background:linear-gradient(135deg,rgba(251,191,36,.08),rgba(249,115,22,.04));border:1px solid rgba(251,191,36,.2);border-radius:24px;padding:36px;text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:"";position:absolute;top:-50%;right:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(251,191,36,.15) 0%,transparent 60%);pointer-events:none}
+.cta-banner h3{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:800;margin-bottom:8px;position:relative;z-index:1}
+.cta-banner p{color:var(--muted);font-size:15px;margin-bottom:20px;position:relative;z-index:1}
+.cta-banner .btn-cta{position:relative;z-index:1}
+
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--muted);font-size:13px}
+@media (max-width:980px){
+  .concepts{grid-template-columns:1fr}
+  .cat-header h3{font-size:24px}
+}
+@media (max-width:560px){
+  section{padding:60px 0}
+  .hero{padding:100px 0 40px}
+  h1{font-size:36px}
+}
+</style>
+<meta name="category_id" content="4">
+                    <meta name="site_id" content="gpw6qv.flexi-funnels.com">
+                    <meta name="funnel_id" content="MyYRpx0dGkLx8Vq4">
+                    <meta name="funnel_page_id" content="lVdK0xq1qMAx7g9R">
+                    <meta id="pageType" name="pageType" content="DEFAULT">
+                    <meta name="ffu_id" content="45045">
+                    <meta name="ff_src" content="77aaf9e52638"><script src="https://plugin.flexifunnels.com/js/jquerylatest.min.js"></script></head>
+<body>
+<div class="bg-mesh"></div>
+<div class="bg-grid"></div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="https://gpw6qv.flexi-funnels.com/ai-concepts-encyclopedia" class="brand">
+      <span class="brand-mark">AI</span>
+      <span>100 AI Concepts</span>
+    </a>
+    
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow"><span class="dot"></span> 2026 Edition · GPT-5 · Claude 4 · Gemini 2</div>
+    <h1>The full <span class="grad">100 AI Concepts</span> library</h1>
+    <p>Every concept, every category, in plain English. Browse, search and learn — the whole encyclopedia, free to read here.</p>
+  </div>
+</header>
+
+<section class="index" id="encyclopedia">
+  <div class="container">
+    <div class="sticky-toc" id="category-nav">
+      <div class="toc-label"><span>Jump to category</span><span class="count">100 / 100</span></div>
+      <div class="toc-items">
+        <a href="#cat-1">🧠 Foundations</a>
+        <a href="#cat-2">📊 Machine Learning</a>
+        <a href="#cat-3">⚡ Deep Learning</a>
+        <a href="#cat-4">💬 NLP</a>
+        <a href="#cat-5">👁️ Computer Vision</a>
+        <a href="#cat-6">🎨 Generative AI</a>
+        <a href="#cat-7">🤖 Agents & Apps</a>
+        <a href="#cat-8">⚖️ Ethics & Future</a>
+      </div>
+    </div>
+
+    <div class="cat-section" id="cat-1">
+      <div class="cat-header">
+        <div class="cat-header-icon" style="background:linear-gradient(135deg,#7c5cff,#a78bfa)">🧠</div>
+        <h3>AI Foundations</h3>
+        <p>The vocabulary you need before anything else makes sense</p>
+        <span class="range">01 – 12</span>
+      </div>
+      <div class="concepts">
+        <div class="concept"><div class="concept-head"><div class="concept-num">01 / 100</div><div class="concept-icon">🤖</div></div><h4>Artificial Intelligence</h4><p class="def">Software that performs tasks normally requiring human intelligence — from recognising faces to writing essays, from driving cars to diagnosing disease.</p><div class="why"><strong>Why it matters</strong>It's the umbrella term for the entire field. Every other concept on this list lives inside it.</div><p class="example">Siri, ChatGPT, Tesla Autopilot and the spam filter in your inbox are all "AI" — but they use wildly different techniques.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">02 / 100</div><div class="concept-icon">📚</div></div><h4>Machine Learning</h4><p class="def">A subfield where computers learn rules from data instead of being explicitly programmed with them. You show it examples, it figures out the pattern.</p><div class="why"><strong>Why it matters</strong>Almost every modern AI success story — from recommendations to translation — is machine learning under the hood.</div><p class="example">Feed a model 100,000 photos labelled "cat" or "dog" and it learns to tell them apart, without you writing a single rule.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">03 / 100</div><div class="concept-icon">⚡</div></div><h4>Deep Learning</h4><p class="def">Machine learning using multi-layer neural networks. "Deep" = many layers, which lets the model learn rich, hierarchical patterns from raw data.</p><div class="why"><strong>Why it matters</strong>It is the engine behind GPT, image recognition, voice assistants and self-driving cars. The 2010s AI revolution was a deep-learning revolution.</div><p class="example">A 50-layer network can learn to recognise faces by first learning edges, then eyes, then whole faces — building understanding from simple parts.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">04 / 100</div><div class="concept-icon">🔗</div></div><h4>Neural Network</h4><p class="def">Loosely brain-inspired math structures of connected "neurons" that transform inputs into outputs. Each connection has a learnable weight.</p><div class="why"><strong>Why it matters</strong>The foundational architecture. Every modern AI is some flavour of neural network — the "lego brick" everything else is built from.</div><p class="example">Input: pixel values. Hidden layers: math. Output: "this is a cat, 97% confident".</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">05 / 100</div><div class="concept-icon">🧮</div></div><h4>Algorithm</h4><p class="def">A precise recipe of steps a computer follows to solve a problem. AI is, at heart, a stack of algorithms — some hand-written, some learned from data.</p><div class="why"><strong>Why it matters</strong>"AI is just algorithms" — understanding this demystifies the field. There's no magic, just math and data.</div><p class="example">Sorting a list, finding the shortest route, recommending a video — all algorithms, all running inside AI systems.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">06 / 100</div><div class="concept-icon">📊</div></div><h4>Data</h4><p class="def">The fuel of modern AI. Every model is shaped by the examples it sees during training — text, images, clicks, sensors, medical records.</p><div class="why"><strong>Why it matters</strong>More and better data almost always beats a cleverer algorithm. The biggest AI labs compete as much on data as on talent.</div><p class="example">GPT was trained on roughly a trillion words of public text. Without that data, no architecture would have produced ChatGPT.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">07 / 100</div><div class="concept-icon">🏷️</div></div><h4>Training Data</h4><p class="def">The labelled or curated dataset used to teach a model. The single biggest determinant of how a model behaves, what it knows, and where it fails.</p><div class="why"><strong>Why it matters</strong>"Garbage in, garbage out" is the oldest rule in ML. A biased dataset produces a biased model — every time.</div><p class="example">A face-recognition system trained mostly on light-skinned faces will be measurably worse at darker-skinned faces. Documented, repeatable, fixable.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">08 / 100</div><div class="concept-icon">💾</div></div><h4>Model</h4><p class="def">The output of training: a saved bundle of weights (numbers) that turns inputs into predictions. The "thing" you actually deploy.</p><div class="why"><strong>Why it matters</strong>When people say "GPT-4" or "Llama 3", they mean a specific model — a file you can run.</div><p class="example">A trained spam-detection model is a ~50MB file of numbers that, given an email, outputs "spam" or "not spam" in milliseconds.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">09 / 100</div><div class="concept-icon">⚙️</div></div><h4>Inference</h4><p class="def">Using a trained model to make a prediction on new, unseen data. This is the "running" phase — the part users actually experience.</p><div class="why"><strong>Why it matters</strong>Training is expensive and slow. Inference is fast and cheap, and happens billions of times a day across the internet.</div><p class="example">Every time you type a message in ChatGPT and hit enter, that's one inference. Each response might be hundreds of inferences in sequence.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">10 / 100</div><div class="concept-icon">🧪</div></div><h4>Turing Test</h4><p class="def">Alan Turing's 1950 idea: if a human can't tell a machine from another human in text conversation, the machine "thinks". The original benchmark for AI.</p><div class="why"><strong>Why it matters</strong>It shaped the entire field's goal for 70 years. Modern LLMs arguably pass it briefly — and that re-opened the entire question.</div><p class="example">In 2014, a chatbot called "Eugene Goostman" fooled 33% of judges into thinking it was a 13-year-old Ukrainian boy. Controversial but technically a "pass".</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">11 / 100</div><div class="concept-icon">❄️</div></div><h4>AI Winter</h4><p class="def">Periods when funding and interest in AI collapsed because promises outpaced results. Two major ones: the late 80s and the mid-90s.</p><div class="why"><strong>Why it matters</strong>Every "AI bubble" today is compared to past winters. History rhymes — and warns.</div><p class="example">After expert systems failed to deliver in the 80s, AI research funding dropped by over 80% within five years. The field nearly died.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">12 / 100</div><div class="concept-icon">📜</div></div><h4>Expert System</h4><p class="def">Early AI that encoded human expert rules as if/then statements. "If patient has fever AND cough, then consider infection." Powerful in narrow domains, brittle everywhere else.</p><div class="why"><strong>Why it matters</strong>The dominant AI paradigm before machine learning took over. Shows what rule-based AI can and can't do.</div><p class="example">MYCIN diagnosed bacterial infections in the 1970s and outperformed junior doctors — but couldn't explain its reasoning in a way humans trusted.</p></div>
+      </div>
+    </div>
+
+    <div class="cat-section" id="cat-2">
+      <div class="cat-header">
+        <div class="cat-header-icon" style="background:linear-gradient(135deg,#22d3ee,#06b6d4)">📊</div>
+        <h3>Machine Learning</h3>
+        <p>The toolkit that turned "AI is magic" into "AI is engineering"</p>
+        <span class="range">13 – 25</span>
+      </div>
+      <div class="concepts">
+        <div class="concept"><div class="concept-head"><div class="concept-num">13 / 100</div><div class="concept-icon">👨‍🏫</div></div><h4>Supervised Learning</h4><p class="def">Learning from examples where the correct answer is given. You hand the model (input, output) pairs and it learns the mapping.</p><div class="why"><strong>Why it matters</strong>The most widely used form of ML in industry. Most "AI products" you use daily are supervised learning under the hood.</div><p class="example">Predict house prices, classify emails as spam, detect fraudulent credit-card transactions. The pattern: lots of labelled past data → a model that generalises.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">14 / 100</div><div class="concept-icon">🔍</div></div><h4>Unsupervised Learning</h4><p class="def">Finding structure in data with no labels. The model has to figure out what makes a "group" or "outlier" on its own.</p><div class="why"><strong>Why it matters</strong>Most real-world data is unlabelled. Unsupervised learning is how we make sense of it.</div><p class="example">Customer segmentation: group shoppers by behaviour without telling the model what "VIP" or "discount-seeker" means — it discovers the segments itself.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">15 / 100</div><div class="concept-icon">🎮</div></div><h4>Reinforcement Learning</h4><p class="def">Learning by trial, error and reward. An agent takes actions in an environment, gets rewards, and learns the policy that maximises total reward.</p><div class="why"><strong>Why it matters</strong>The only paradigm that truly learns from interaction, not from a fixed dataset. Powers game-playing champions and robotics.</div><p class="example">AlphaGo learned Go by playing itself millions of times, getting +1 for winning and -1 for losing, eventually beating the world champion 4-1.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">16 / 100</div><div class="concept-icon">⚖️</div></div><h4>Semi-Supervised Learning</h4><p class="def">A small labelled set plus a big unlabelled set. The model learns from both, getting most of the benefit of supervision at a fraction of the labelling cost.</p><div class="why"><strong>Why it matters</strong>Labelling data is expensive. Semi-supervised learning is the pragmatic middle ground.</div><p class="example">Label 1,000 medical scans out of 100,000 — get nearly the accuracy of having all 100,000 labelled.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">17 / 100</div><div class="concept-icon">🔄</div></div><h4>Self-Supervised Learning</h4><p class="def">The model creates its own labels from raw data. Mask a word, predict it. Hide a frame, predict it. No humans needed.</p><div class="why"><strong>Why it matters</strong>The trick that unlocked the modern LLM revolution. GPT and friends are essentially giant self-supervised learners.</div><p class="example">BERT learned language by reading billions of sentences with random words blanked out, learning to fill in the gaps. No human labelled anything.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">18 / 100</div><div class="concept-icon">🏷️</div></div><h4>Classification</h4><p class="def">Predicting a category: spam / not-spam, cat / dog / bird, positive / negative review, malignant / benign tumour.</p><div class="why"><strong>Why it matters</strong>Half of all ML in production is classification. It's the workhorse of business AI.</div><p class="example">Your bank's fraud system classifies every transaction in milliseconds. Your email's spam filter classifies billions of messages per day.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">19 / 100</div><div class="concept-icon">📈</div></div><h4>Regression</h4><p class="def">Predicting a number: house price, temperature, sales next quarter, blood pressure, customer lifetime value.</p><div class="why"><strong>Why it matters</strong>Whenever the answer is "how much" or "how many", you want regression. Forecasts drive most business decisions.</div><p class="example">Zillow's Zestimate predicts US home values using regression on hundreds of features — size, location, recent sales, school ratings.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">20 / 100</div><div class="concept-icon">🧩</div></div><h4>Clustering</h4><p class="def">Grouping similar items without pre-defined labels. K-Means, DBSCAN, hierarchical clustering — the algorithms differ, the goal is the same.</p><div class="why"><strong>Why it matters</strong>It's the "show me what's in this data" tool. Used in biology, marketing, anomaly detection and recommendation.</div><p class="example">Spotify clusters millions of songs by audio features. Songs in the same cluster feel similar — even if no one labelled them that way.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">21 / 100</div><div class="concept-icon">🎯</div></div><h4>Overfitting</h4><p class="def">When a model memorises the training data instead of learning the underlying pattern. Great on practice data, useless on new data.</p><div class="why"><strong>Why it matters</strong>The most common beginner mistake and the central disease of ML. Detecting it is half the job.</div><p class="example">A student who memorises past exam answers word-for-word will ace practice tests and fail the real one. That's overfitting in human form.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">22 / 100</div><div class="concept-icon">😴</div></div><h4>Underfitting</h4><p class="def">The opposite of overfitting: the model is too simple to capture what's actually going on. It fails on both training and test data.</p><div class="why"><strong>Why it matters</strong>You can't fix underfitting with more data. You need a more powerful model or better features.</div><p class="example">Trying to predict house prices using only square footage — ignoring location, condition, age. The model is doomed no matter how much data you feed it.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">23 / 100</div><div class="concept-icon">⚖️</div></div><h4>Bias-Variance Tradeoff</h4><p class="def">The central tension in ML: too rigid (high bias) and you miss; too flexible (high variance) and you memorise. The art is finding the sweet spot.</p><div class="why"><strong>Why it matters</strong>It's the single most important mental model in all of machine learning. Almost every design decision trades one for the other.</div><p class="example">A 1-degree polynomial is too biased to fit a curve. A 100-degree polynomial will wiggle through every point — and miss every new one. Aim for the 3rd degree.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">24 / 100</div><div class="concept-icon">✂️</div></div><h4>Cross-Validation</h4><p class="def">Splitting data multiple ways to honestly test a model. The gold-standard way to report performance — and to pick between competing models.</p><div class="why"><strong>Why it matters</strong>A single train/test split can lie to you. Cross-validation gives a much more reliable estimate of real-world performance.</div><p class="example">K-fold cross-validation: split your data into 5 chunks, train on 4, test on 1, repeat 5 times. Average the 5 scores. That's your honest number.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">25 / 100</div><div class="concept-icon">🎛️</div></div><h4>Hyperparameter Tuning</h4><p class="def">Choosing the model's settings — learning rate, tree depth, layer count, regularisation strength. The art part of the science.</p><div class="why"><strong>Why it matters</strong>The same algorithm with different hyperparameters can go from state-of-the-art to useless. This is where ML engineers spend their days.</div><p class="example">A random forest with 10 trees is weak. With 1,000 trees it's great. With 100,000 trees it's slow and not better. Finding the right number is tuning.</p></div>
+      </div>
+    </div>
+
+    <div class="cat-section" id="cat-3">
+      <div class="cat-header">
+        <div class="cat-header-icon" style="background:linear-gradient(135deg,#f472b6,#ec4899)">⚡</div>
+        <h3>Deep Learning</h3>
+        <p>Where AI learned to see, hear, and read</p>
+        <span class="range">26 – 38</span>
+      </div>
+      <div class="concepts">
+        <div class="concept"><div class="concept-head"><div class="concept-num">26 / 100</div><div class="concept-icon">⚪</div></div><h4>Perceptron</h4><p class="def">The simplest neural network: inputs, weights, a threshold, an output. The 1958 seed from which everything else grew.</p><div class="why"><strong>Why it matters</strong>It's the atom of deep learning. Understand this and every larger network is just more of the same, connected.</div><p class="example">A perceptron can learn AND, OR, NOT — but famously can't learn XOR. That limitation triggered the first AI winter.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">27 / 100</div><div class="concept-icon">📚</div></div><h4>Multilayer Perceptron</h4><p class="def">Stack many perceptrons in layers. Add non-linear activations between layers and you can approximate almost any function.</p><div class="why"><strong>Why it matters</strong>The first "deep" network. The "MLP" is still the workhorse of tabular data — credit scoring, churn prediction, fraud detection.</div><p class="example">A 3-layer MLP (input, hidden, output) can learn the XOR function that brought down the original perceptron. Add layers, add capability.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">28 / 100</div><div class="concept-icon">↩️</div></div><h4>Backpropagation</h4><p class="def">The algorithm that updates a network's weights by sending the error backwards, layer by layer, using calculus (the chain rule).</p><div class="why"><strong>Why it matters</strong>Backprop is the reason deep learning works at all. Without it, training a 100-layer network would be impossible.</div><p class="example">It's like a teacher grading a 100-question exam, then telling each student not just their overall score but which specific questions they got wrong.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">29 / 100</div><div class="concept-icon">🔌</div></div><h4>Activation Function</h4><p class="def">ReLU, Sigmoid, GELU, Tanh — the non-linear switch at the end of each neuron that lets networks learn complex patterns.</p><div class="why"><strong>Why it matters</strong>Without non-linearities, stacking layers is mathematically equivalent to a single layer. Activations are what make "deep" actually deep.</div><p class="example">ReLU is just "if positive, pass through; else, zero". That one line of code powers most of modern AI.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">30 / 100</div><div class="concept-icon">⛰️</div></div><h4>Gradient Descent</h4><p class="def">How models learn: nudge weights downhill on the loss surface, step by tiny step. Repeat millions of times.</p><div class="why"><strong>Why it matters</strong>It's the optimisation engine at the heart of all deep learning. Every modern model is trained with some flavour of it.</div><p class="example">Imagine you're blindfolded on a hill and want to reach the bottom. Feel the slope under your feet, take a small step downhill, repeat. That's gradient descent.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">31 / 100</div><div class="concept-icon">🖼️</div></div><h4>Convolutional Neural Network</h4><p class="def">The architecture that cracked image recognition by sliding learned filters across pixels, building up from edges to objects.</p><div class="why"><strong>Why it matters</strong>CNNs made computer vision work in production. They're why your phone can recognise faces and why self-driving cars see pedestrians.</div><p class="example">AlexNet won the 2012 ImageNet competition, halving the error rate of all previous approaches. That moment launched the deep-learning revolution.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">32 / 100</div><div class="concept-icon">🔁</div></div><h4>Recurrent Neural Network</h4><p class="def">A network with memory, designed for sequences. Text, audio, time-series. Each step feeds into the next.</p><div class="why"><strong>Why it matters</strong>RNNs were the dominant sequence model for a decade and powered the first wave of machine translation, speech recognition and captioning.</div><p class="example">Translating "I love AI" to French happens one word at a time, with the network remembering what came before. That's an RNN at work.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">33 / 100</div><div class="concept-icon">🚪</div></div><h4>Long Short-Term Memory</h4><p class="def">An RNN variant with input, forget and output gates. Can remember information over long gaps in a sequence.</p><div class="why"><strong>Why it matters</strong>LSTM solved the "vanishing gradient" problem that made vanilla RNNs forget things after a few steps. It was the state of the art until Transformers.</div><p class="example">"The cat, which I adopted from the shelter three years ago and that my sister named after her favourite musician, ___ very loud." LSTM can fill "is" — vanilla RNN can't.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">34 / 100</div><div class="concept-icon">⚡</div></div><h4>Gated Recurrent Unit</h4><p class="def">A lighter, faster cousin of LSTM with fewer gates (reset + update). Same idea, fewer knobs.</p><div class="why"><strong>Why it matters</strong>GRUs train faster than LSTMs and often perform comparably. The default choice when you want a small, fast recurrent model.</div><p class="example">On a small dataset, a GRU often matches an LSTM with half the parameters and twice the training speed.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">35 / 100</div><div class="concept-icon">🗜️</div></div><h4>Autoencoder</h4><p class="def">A network that compresses data into a small code, then reconstructs it. Used for denoising, anomaly detection and feature learning.</p><div class="why"><strong>Why it matters</strong>Autoencoders are the foundation of generative models and dimensionality reduction. They teach the model what's important about the data.</div><p class="example">Train an autoencoder on credit-card transactions. Fraudulent ones have high reconstruction error → flag them.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">36 / 100</div><div class="concept-icon">🎲</div></div><h4>Dropout</h4><p class="def">Randomly switch off neurons during training so the network can't over-rely on any one path. A regularisation technique.</p><div class="why"><strong>Why it matters</strong>Dropout is one line of code that dramatically reduces overfitting. It's in nearly every deep-learning model.</div><p class="example">During training, 30% of neurons are randomly "off" each step. The network learns redundant pathways — and generalises far better.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">37 / 100</div><div class="concept-icon">📏</div></div><h4>Batch Normalization</h4><p class="def">Keep layer activations in a healthy range so very deep networks can actually train. Originally a fix for an internal covariate shift problem.</p><div class="why"><strong>Why it matters</strong>BatchNorm made it practical to train 50-, 100-, even 1000-layer networks. Without it, training would be painfully slow and unstable.</div><p class="example">Like resetting the thermostat in every room of a building so the heating system in the next room doesn't have to fight a -40°C input.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">38 / 100</div><div class="concept-icon">♻️</div></div><h4>Transfer Learning</h4><p class="def">Take a model trained on one big task and fine-tune it for yours. 90% of practical AI starts here.</p><div class="why"><strong>Why it matters</strong>You almost never train from scratch. You borrow a pre-trained model and adapt it — saving weeks of compute and millions of dollars.</div><p class="example">Take a model trained on 1.4 million ImageNet photos, add 1,000 photos of your specific products, fine-tune. Works in an afternoon on a laptop.</p></div>
+      </div>
+    </div>
+
+    <div class="cat-section" id="cat-4">
+      <div class="cat-header">
+        <div class="cat-header-icon" style="background:linear-gradient(135deg,#f5b942,#f59e0b)">💬</div>
+        <h3>Natural Language Processing</h3>
+        <p>How machines learned to read, write and reason with text</p>
+        <span class="range">39 – 51</span>
+      </div>
+      <div class="concepts">
+        <div class="concept"><div class="concept-head"><div class="concept-num">39 / 100</div><div class="concept-icon">✂️</div></div><h4>Tokenization</h4><p class="def">Splitting text into the chunks (tokens) a model can process — words, sub-words, or bytes. The first step in any NLP pipeline.</p><div class="why"><strong>Why it matters</strong>Models don't see "words" — they see tokens. How you tokenise affects model size, cost and even what languages work well.</div><p class="example">GPT-4 tokenises "understanding" as ["under", "standing"]. "Unhappiness" becomes ["un", "happiness"]. Sub-word tokens handle any word, even made-up ones.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">40 / 100</div><div class="concept-icon">🧭</div></div><h4>Word Embedding</h4><p class="def">Turning words into vectors of numbers so similar words land close together in a high-dimensional space.</p><div class="why"><strong>Why it matters</strong>Embeddings let math operate on meaning. Once words are vectors, "king - man + woman = queen" is just vector arithmetic.</div><p class="example">The words "cat", "kitten", "puppy" cluster together. "Paris", "Tokyo", "Mumbai" form their own cluster. Geography and zoology become geometry.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">41 / 100</div><div class="concept-icon">👑</div></div><h4>Word2Vec</h4><p class="def">The 2013 method that proved words can be learned as vectors from raw text alone. King − Man + Woman ≈ Queen.</p><div class="why"><strong>Why it matters</strong>Word2Vec launched the modern NLP era. It showed that massive meaning can be extracted from raw text with almost no human labelling.</div><p class="example">Trained on Google News, Word2Vec learned that "Paris" is to "France" as "Tokyo" is to "Japan". Pure math, no dictionary.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">42 / 100</div><div class="concept-icon">🎒</div></div><h4>Bag of Words</h4><p class="def">The simplest text representation: count which words appear, ignore the order. Surprisingly useful as a baseline.</p><div class="why"><strong>Why it matters</strong>BoW is dumb and old — and still beats fancy models on small datasets. Always start here.</div><p class="example">"Dog bites man" and "Man bites dog" have the same bag of words. Different meaning. Bag of Words can't tell — but for spam filtering, it often doesn't need to.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">43 / 100</div><div class="concept-icon">⚖️</div></div><h4>TF-IDF</h4><p class="def">Weights a word by how unique it is to a document. Common words ("the", "is") get low weight; rare, meaningful words get high weight.</p><div class="why"><strong>Why it matters</strong>TF-IDF was the workhorse of search engines and spam filters for a decade. Cheap, fast, surprisingly competitive.</div><p class="example">Searching "machine learning tutorial" — TF-IDF ranks documents where "machine" and "learning" appear together, down-weighting pages with the word "the" 500 times.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">44 / 100</div><div class="concept-icon">🔄</div></div><h4>Transformer</h4><p class="def">The 2017 architecture that powers every modern LLM. "Attention is all you need" — literally the paper title.</p><div class="why"><strong>Why it matters</strong>The single most important architecture of the decade. GPT, Claude, Gemini, Llama, Mistral — all Transformers.</div><p class="example">A Transformer reading a sentence looks at every word at once, deciding which other words matter for understanding each one. Parallel, not sequential — which is why it scales.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">45 / 100</div><div class="concept-icon">👁️</div></div><h4>Self-Attention</h4><p class="def">Every token looks at every other token in the sequence and decides what to pay attention to. The core trick of the Transformer.</p><div class="why"><strong>Why it matters</strong>Self-attention is what lets a model understand context — why "bank" means river bank in one sentence and money bank in another.</div><p class="example">In "The animal didn't cross the street because it was too tired", self-attention figures out that "it" refers to "the animal", not "the street".</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">46 / 100</div><div class="concept-icon">🧠</div></div><h4>Multi-Head Attention</h4><p class="def">Several attention operations in parallel, each looking for different relationships. One head for syntax, one for meaning, one for long-range links, etc.</p><div class="why"><strong>Why it matters</strong>Multiple heads let the model capture many kinds of relationships in the same sentence — not just one.</div><p class="example">In "I deposited money at the bank", one head might link "deposited" to "money", another links "bank" to "deposited" — different relationships, same layer.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">47 / 100</div><div class="concept-icon">📍</div></div><h4>Positional Encoding</h4><p class="def">How Transformers know word order, since attention itself is position-blind. A clever sin/cos pattern added to each token's embedding.</p><div class="why"><strong>Why it matters</strong>Without this, "dog bites man" and "man bites dog" are identical to a Transformer. Positional encoding fixes that.</div><p class="example">Each token gets a unique position number encoded as a wave. The model can tell token #1 from token #2, and even how far apart they are.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">48 / 100</div><div class="concept-icon">🔎</div></div><h4>BERT</h4><p class="def">Google's 2018 bidirectional encoder. Reads text both ways. Revolutionised search ranking and any "understand this text" task.</p><div class="why"><strong>Why it matters</strong>BERT changed Google Search in 2019 — affecting roughly 10% of all English queries. One model, billions of dollars of impact.</div><p class="example">For "can you get medicine for someone pharmacy", BERT understands "for someone" is a context clue — better than keyword matching ever could.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">49 / 100</div><div class="concept-icon">✨</div></div><h4>GPT</h4><p class="def">Generative Pre-trained Transformer. Predicts the next token, scaled to hundreds of billions of parameters. The "G" in ChatGPT.</p><div class="why"><strong>Why it matters</strong>GPT-3 (2020) and GPT-4 (2023) showed the world what scaling could do. The product that took AI mainstream.</div><p class="example">GPT writes essays, code, emails, contracts, recipes. All from one simple training objective: predict the next word in a sentence.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">50 / 100</div><div class="concept-icon">📚</div></div><h4>Large Language Model</h4><p class="def">An LLM: a Transformer trained on huge text corpora to predict the next token. ChatGPT, Claude, Gemini, Llama, Mistral — all LLMs.</p><div class="why"><strong>Why it matters</strong>The dominant AI of our era. A single architecture, trained at scale, can do translation, summarisation, reasoning, coding and conversation.</div><p class="example">An LLM with 70 billion parameters can run on a laptop. A 1-trillion-parameter model can pass the bar exam. Size unlocks capability — but at a price.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">51 / 100</div><div class="concept-icon">🪄</div></div><h4>Prompt Engineering</h4><p class="def">Crafting the input to an LLM to reliably get the output you want. The new programming.</p><div class="why"><strong>Why it matters</strong>Same model, better prompt = dramatically better results. Prompt engineering is now a real, high-paid skill.</div><p class="example">"Write about dogs" gets generic output. "Write a 200-word essay in the style of a David Attenborough narration about a puppy meeting a tortoise" gets a specific, vivid result.</p></div>
+      </div>
+    </div>
+
+    <div class="cat-section" id="cat-5">
+      <div class="cat-header">
+        <div class="cat-header-icon" style="background:linear-gradient(135deg,#10b981,#22d3ee)">👁️</div>
+        <h3>Computer Vision</h3>
+        <p>Teaching machines to see the world the way we do</p>
+        <span class="range">52 – 62</span>
+      </div>
+      <div class="concepts">
+        <div class="concept"><div class="concept-head"><div class="concept-num">52 / 100</div><div class="concept-icon">🏷️</div></div><h4>Image Classification</h4><p class="def">Given an image, output one label. "This is a cat." The starting point of modern vision AI.</p><div class="why"><strong>Why it matters</strong>The "Hello World" of computer vision. Every vision system builds on classification in some way.</div><p class="example">Google Photos classifies every photo in your library — people, places, objects, even activities — and uses it for search.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">53 / 100</div><div class="concept-icon">📦</div></div><h4>Object Detection</h4><p class="def">Find and box every object of interest. Not just "is there a dog" but "here is the dog, there is the cat, both at these pixels."</p><div class="why"><strong>Why it matters</strong>Real-world AI usually needs to know WHERE things are, not just WHAT. Object detection is the workhorse.</div><p class="example">Self-driving cars detect every pedestrian, cyclist, vehicle, traffic sign and lane marking — usually 30 times per second.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">54 / 100</div><div class="concept-icon">🗺️</div></div><h4>Image Segmentation</h4><p class="def">Mark every pixel that belongs to a thing, not just boxes. Semantic segmentation labels each pixel; instance segmentation separates each object.</p><div class="why"><strong>Why it matters</strong>For medical imaging, AR effects and autonomous driving, boxes aren't precise enough. You need per-pixel precision.</div><p class="example">In an MRI, segmentation can outline a tumour down to the pixel — giving surgeons exact 3D measurements to plan with.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">55 / 100</div><div class="concept-icon">👀</div></div><h4>YOLO</h4><p class="def">"You Only Look Once" — the most famous real-time object detector. Fast enough to run on a phone, accurate enough to use in production.</p><div class="why"><strong>Why it matters</strong>YOLO made real-time object detection a commodity. It's the default for any project that needs vision at speed.</div><p class="example">A YOLO model on a Raspberry Pi can detect people, cars and animals in a live video feed at 30 frames per second.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">56 / 100</div><div class="concept-icon">🖼️</div></div><h4>R-CNN</h4><p class="def">The region-based CNN family: propose regions that might contain objects, then classify each. Slower than YOLO, often more accurate.</p><div class="why"><strong>Why it matters</strong>R-CNN started the modern object-detection race in 2014. Its descendants (Mask R-CNN, Faster R-CNN) are still used in research.</div><p class="example">For medical scans where you need the most accurate possible bounding box, R-CNN variants are usually preferred over YOLO.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">57 / 100</div><div class="concept-icon">👤</div></div><h4>Facial Recognition</h4><p class="def">Identify or verify a person from their face. A sensitive application — and a privacy flashpoint.</p><div class="why"><strong>Why it matters</strong>It's the canonical example of AI's double edge: genuinely useful for security, genuinely dangerous for surveillance.</div><p class="example">Your phone uses it to unlock. Airports use it for boarding. Authoritarian governments use it for surveillance. Same tech, very different worlds.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">58 / 100</div><div class="concept-icon">📃</div></div><h4>Optical Character Recognition</h4><p class="def">Turning images of text into editable, searchable text. Receipts, books, license plates, handwritten notes.</p><div class="why"><strong>Why it matters</strong>OCR is the bridge between paper and digital. It's been around for decades but modern AI-OCR handles bad scans, handwriting and 100+ languages.</div><p class="example">Drop a PDF of a 1990s scanned book into an OCR pipeline and get a fully editable, searchable digital version in minutes.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">59 / 100</div><div class="concept-icon">📐</div></div><h4>Edge Detection</h4><p class="def">Finding where pixels change sharply — the first step in almost every vision pipeline. The Canny edge detector is the classic.</p><div class="why"><strong>Why it matters</strong>Edges = structure. Find the edges, and the rest of vision becomes much easier. Even modern CNNs use edge-like filters in their first layer.</div><p class="example">Self-driving systems use edge detection to find lane markings — even in rain, at night, with worn paint.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">60 / 100</div><div class="concept-icon">🔬</div></div><h4>Feature Extraction</h4><p class="def">Turning raw pixels into a useful, compact representation. The step where most of the "intelligence" lives.</p><div class="why"><strong>Why it matters</strong>A good feature extractor turns an impossible problem into a trivial one. Deep learning's biggest contribution is "let the model learn its own features".</div><p class="example">For face recognition, hand-crafted features used to be distances between eyes, nose width and so on. CNNs learn their own — better than any human can design.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">61 / 100</div><div class="concept-icon">🧩</div></div><h4>Convolutional Layer</h4><p class="def">The learnable filter that slides across an image, detecting edges, shapes, then objects. The building block of every CNN.</p><div class="why"><strong>Why it matters</strong>Convolution is what makes vision networks work. It exploits the fact that nearby pixels are related, and the same pattern can appear anywhere.</div><p class="example">A 3x3 filter that detects vertical edges will fire whether the edge is in the top-left or bottom-right of the image. Translation invariance, built in.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">62 / 100</div><div class="concept-icon">📉</div></div><h4>Pooling Layer</h4><p class="def">Downsamples feature maps to keep computation manageable and the model robust to small position shifts. Max pooling is the standard.</p><div class="why"><strong>Why it matters</strong>Without pooling, every layer would produce massive outputs. Pooling shrinks them — and gives the model "I don't care exactly where" flexibility.</div><p class="example">A 2x2 max-pool takes a 4x4 feature map and outputs the strongest value from each 2x2 block. The model learns "is there an eye here?" not "is the eye at exactly pixel 47, 52?"</p></div>
+      </div>
+    </div>
+
+    <div class="cat-section" id="cat-6">
+      <div class="cat-header">
+        <div class="cat-header-icon" style="background:linear-gradient(135deg,#f472b6,#7c5cff)">🎨</div>
+        <h3>Generative AI</h3>
+        <p>From analysing the world to creating new ones</p>
+        <span class="range">63 – 75</span>
+      </div>
+      <div class="concepts">
+        <div class="concept"><div class="concept-head"><div class="concept-num">63 / 100</div><div class="concept-icon">⚔️</div></div><h4>Generative Adversarial Network</h4><p class="def">Two networks duel: a Generator fakes images, a Discriminator judges them. The result is photorealistic synthesis.</p><div class="why"><strong>Why it matters</strong>GANs were the first model family to generate images indistinguishable from real photos. They launched the generative-AI era in 2014.</div><p class="example">ThisPersonDoesNotExist.com shows a fresh AI-generated face every refresh — all from a StyleGAN model. None of them are real people.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">64 / 100</div><div class="concept-icon">📦</div></div><h4>Variational Autoencoder</h4><p class="def">An autoencoder that learns a smooth, sampleable latent space. The grandparent of modern image generators.</p><div class="why"><strong>Why it matters</strong>VAEs introduced the idea of a continuous, meaningful "space" you can sample from — the foundation of all modern generative models.</div><p class="example">The "smile slider" in face-editing apps comes from a VAE. Move along one direction in latent space and smiles appear — without anyone labelling "smile".</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">65 / 100</div><div class="concept-icon">🌫️</div></div><h4>Diffusion Model</h4><p class="def">Learn to reverse a noising process. Add noise step by step, then teach a model to undo it. The technique behind Stable Diffusion, DALL-E 3, and Imagen.</p><div class="why"><strong>Why it matters</strong>Diffusion models are the current state of the art for image and video generation. They produce sharper, more controllable results than GANs.</div><p class="example">Midjourney v6, DALL-E 3, Stable Diffusion XL and Adobe Firefly are all diffusion models under the hood. Different products, same core idea.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">66 / 100</div><div class="concept-icon">🖼️</div></div><h4>DALL-E</h4><p class="def">OpenAI's text-to-image model. Sparked the consumer generative-AI wave in 2022.</p><div class="why"><strong>Why it matters</strong>When DALL-E 2 launched, it broke the public's mental model of what AI could do. Suddenly, anyone could "draw" with words.</div><p class="example">"An astronaut riding a horse in a cyberpunk city, oil painting" — DALL-E generates four images in ~10 seconds.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">67 / 100</div><div class="concept-icon">🌍</div></div><h4>Stable Diffusion</h4><p class="def">Open-source diffusion model. The community's workhorse — fine-tunes, LoRAs, ControlNets, all built on this.</p><div class="why"><strong>Why it matters</strong>Because it's open, Stable Diffusion spawned an entire ecosystem of fine-tunes for styles, characters and use cases no lab would ever train for.</div><p class="example">Train a LoRA on 20 photos of your dog → Stable Diffusion can now generate infinite images of your dog in any style, anywhere.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">68 / 100</div><div class="concept-icon">🎭</div></div><h4>Midjourney</h4><p class="def">The Discord-native image generator famous for its painterly, cinematic default look. Closed-source, opinionated aesthetics.</p><div class="why"><strong>Why it matters</strong>Midjourney defined what "AI art" looks like to most people. Its default style is gorgeous out of the box.</div><p class="example">Most viral AI images you've seen on social media in 2023-24 are Midjourney. Its V6 model is the gold standard for stylised illustration.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">69 / 100</div><div class="concept-icon">✍️</div></div><h4>Text-to-Image</h4><p class="def">The whole category: write a prompt, get a picture. The most visible face of generative AI.</p><div class="why"><strong>Why it matters</strong>Text-to-image collapsed the skill floor for visual creation. You no longer need to draw to "make" an image — you need to describe.</div><p class="example">A book author can now generate a unique cover for their novel in 30 seconds, for the cost of a few cents of compute.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">70 / 100</div><div class="concept-icon">🎬</div></div><h4>Text-to-Video</h4><p class="def">Describe a scene, get a video. Sora, Veo, Runway Gen-3, Kling, Pika — all racing here in 2026.</p><div class="why"><strong>Why it matters</strong>Video is the next frontier. Models can now generate short, coherent, high-quality clips from a sentence.</div><p class="example">"A drone shot over a misty forest at sunrise, cinematic" → a 10-second 1080p video in under a minute. Hollywood is paying close attention.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">71 / 100</div><div class="concept-icon">🎨</div></div><h4>Neural Style Transfer</h4><p class="def">Re-render one image in the artistic style of another. The "Prisma filter" trick, mathematically.</p><div class="why"><strong>Why it matters</strong>It was the first viral demonstration that neural networks could "understand" art style, not just recognise objects.</div><p class="example">Take your holiday photo and a Van Gogh painting, get a version of your photo that looks like Van Gogh painted it. The 2016 viral sensation.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">72 / 100</div><div class="concept-icon">🔍</div></div><h4>Super-Resolution</h4><p class="def">AI upscaling: turn a small, blurry image into a large, sharp one. Now standard in phones and TVs.</p><div class="why"><strong>Why it matters</strong>Bigger images without bigger files. Or restore old family photos from low-res scans. Or stream 4K video with 1080p bandwidth.</div><p class="example">The latest Samsung phones "zoom" beyond their optical zoom by using a super-resolution model. The blur becomes detail.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">73 / 100</div><div class="concept-icon">🎭</div></div><h4>Deepfake</h4><p class="def">Synthetic media so realistic it fools the eye. A technology, a threat, and a legal headache all at once.</p><div class="why"><strong>Why it matters</strong>Deepfakes are the AI safety question everyone can see. They're used in entertainment, fraud, election interference and identity theft.</div><p class="example">A 2024 deepfake video call cost a Hong Kong firm $25 million. The CFO was real-looking but AI-generated. Real money, real lesson.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">74 / 100</div><div class="concept-icon">🎙️</div></div><h4>Voice Cloning</h4><p class="def">Replicate a voice from a few seconds of audio. ElevenLabs, Tortoise, OpenVoice and open models all do it now.</p><div class="why"><strong>Why it matters</strong>Same double edge as deepfakes: brilliant for accessibility (people who lost their voice) and terrifying for fraud.</div><p class="example">A patient with ALS used ElevenLabs to clone their voice from old recordings — then spoke through it for the rest of their life. Same tech, used for love.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">75 / 100</div><div class="concept-icon">🎵</div></div><h4>Music Generation</h4><p class="def">AI that composes. Suno, Udio, and open models like MusicGen. A genuine new instrument — and a copyright question.</p><div class="why"><strong>Why it matters</strong>Music generation democratised songwriting. It's also the front line of the largest copyright lawsuit in AI history.</div><p class="example">"Lo-fi hip-hop beats to study to, 3 minutes, female vocals" → a complete, original track in 30 seconds. SoundCloud is now full of them.</p></div>
+      </div>
+    </div>
+
+    <div class="cat-section" id="cat-7">
+      <div class="cat-header">
+        <div class="cat-header-icon" style="background:linear-gradient(135deg,#22d3ee,#7c5cff)">🤖</div>
+        <h3>Agents & Applications</h3>
+        <p>From answering questions to actually getting things done</p>
+        <span class="range">76 – 87</span>
+      </div>
+      <div class="concepts">
+        <div class="concept"><div class="concept-head"><div class="concept-num">76 / 100</div><div class="concept-icon">🤖</div></div><h4>AI Agent</h4><p class="def">An LLM that doesn't just chat — it plans, uses tools, and acts over many steps to hit a goal.</p><div class="why"><strong>Why it matters</strong>Agents are the bridge from "AI as a typewriter" to "AI as a coworker". They turn language models into doers.</div><p class="example">"Book me a flight to Mumbai under ₹15,000 next Tuesday" — an agent searches, compares, picks, fills forms, pays, sends confirmation. All autonomously.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">77 / 100</div><div class="concept-icon">🌀</div></div><h4>Autonomous Agent</h4><p class="def">An agent with minimal human input, running long workflows end to end. Auto-GPT started the wave in 2023.</p><div class="why"><strong>Why it matters</strong>Autonomy is the difference between "AI assistant" and "AI employee". The business implications are enormous.</div><p class="example">Give an autonomous agent a goal like "research my competitors and write a report" — it plans sub-tasks, browses, takes notes, writes, iterates.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">78 / 100</div><div class="concept-icon">📚</div></div><h4>Retrieval-Augmented Generation</h4><p class="def">Let the LLM look things up in your documents before answering. The fix for "the model doesn't know my data".</p><div class="why"><strong>Why it matters</strong>RAG is how every enterprise uses LLMs. It grounds the model's answers in real, current, private data.</div><p class="example">Customer support bot for a bank: a RAG system finds the relevant policy doc, hands it to the LLM, the LLM writes a grounded answer with citations.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">79 / 100</div><div class="concept-icon">🗄️</div></div><h4>Vector Database</h4><p class="def">A database tuned for similarity search over embeddings. Pinecone, Weaviate, pgvector, Chroma, Qdrant.</p><div class="why"><strong>Why it matters</strong>The "memory" of every RAG system. Store embeddings, search by meaning instead of keywords.</div><p class="example">A vector database holding 10 million product descriptions can find "cozy autumn sweaters" even if no product has those exact words.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">80 / 100</div><div class="concept-icon">🧭</div></div><h4>Embedding Space</h4><p class="def">The high-dimensional space where meaning lives. Near = similar. Far = unrelated. The geometry of understanding.</p><div class="why"><strong>Why it matters</strong>Almost every modern AI feature — search, recommendations, RAG, clustering — depends on a good embedding space.</div><p class="example">"I love this movie" and "This film is amazing" are far apart in word space but close in embedding space. The second is what matters.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">81 / 100</div><div class="concept-icon">💬</div></div><h4>Chatbot</h4><p class="def">Software that converses. From 1960s ELIZA to today's multimodal assistants. Same name, very different beast.</p><div class="why"><strong>Why it matters</strong>The most common way people interact with AI. Every business is being asked "do you have a chatbot for that?".</div><p class="example">Banking apps, airline websites, and your doctor's appointment system all use chatbots. The good ones are LLM-powered; the bad ones are still 1990s decision trees.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">82 / 100</div><div class="concept-icon">🎯</div></div><h4>Recommendation System</h4><p class="def">"Because you watched X..." Collaborative filtering, content-based, hybrid — the engine of Netflix, YouTube, Amazon, Spotify.</p><div class="why"><strong>Why it matters</strong>Recommender systems drive an estimated 30-40% of consumer web revenue. They shape what you see, buy and watch.</div><p class="example">TikTok's "For You" feed is famously the most aggressive recommender ever shipped. It's the reason the average user spends 95 minutes a day on the app.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">83 / 100</div><div class="concept-icon">🔮</div></div><h4>Predictive Analytics</h4><p class="def">Using historical data to forecast the future. Churn, demand, risk, equipment failure, weather, sales.</p><div class="why"><strong>Why it matters</strong>Most business "AI" is actually predictive analytics. It's where data science meets operations.</div><p class="example">A retailer predicts next month's demand per store per SKU. Cuts stockouts by 30%, cuts overstock by 25%. Multi-million dollar impact, classic ML model.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">84 / 100</div><div class="concept-icon">🎤</div></div><h4>Speech Recognition</h4><p class="def">Audio in, text out. Whisper, Deepgram, and the dictation in your phone — all neural networks now.</p><div class="why"><strong>Why it matters</strong>Voice is the most natural interface. Modern speech recognition is good enough to replace a keyboard for many tasks.</div><p class="example">OpenAI's Whisper transcribes 99 languages with near-human accuracy. Doctors using it save 2 hours of paperwork per day.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">85 / 100</div><div class="concept-icon">🔊</div></div><h4>Text-to-Speech</h4><p class="def">Text in, lifelike voice out. ElevenLabs, PlayHT, Azure Neural voices, and the voices inside every GPS and audiobook app.</p><div class="why"><strong>Why it matters</strong>Indistinguishable from a human voice now. Audiobooks, dubbing, accessibility, call-centre automation — all changing fast.</div><p class="example">An AI can read a 300-page novel aloud in any voice, in any language, with emotion. The audiobook industry is being rebuilt.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">86 / 100</div><div class="concept-icon">👁️</div></div><h4>Computer Vision</h4><p class="def">The field of teaching machines to see. A whole discipline — and one of AI's biggest commercial wins.</p><div class="why"><strong>Why it matters</strong>From medical imaging to quality control on factory lines, vision AI is saving industries billions.</div><p class="example">A tomato-sorting facility uses computer vision to grade every tomato for ripeness, size and defects. Replaces dozens of human sorters, with higher accuracy.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">87 / 100</div><div class="concept-icon">🦾</div></div><h4>Robotics</h4><p class="def">Embodied AI: perception, planning, action. From warehouse arms to humanoids like Optimus and Figure 02.</p><div class="why"><strong>Why it matters</strong>AI that moves in the real world is the next industrial revolution. Labour, logistics, healthcare, home — all up for grabs.</div><p class="example">Amazon's warehouses use over 750,000 robots. The latest humanoids can fold laundry, sort packages and even (slowly) make espresso.</p></div>
+      </div>
+    </div>
+
+    <div class="cat-section" id="cat-8">
+      <div class="cat-header">
+        <div class="cat-header-icon" style="background:linear-gradient(135deg,#ef4444,#f5b942)">⚖️</div>
+        <h3>Ethics, Safety & Future</h3>
+        <p>What we build, what we should build, and where this is all going</p>
+        <span class="range">88 – 100</span>
+      </div>
+      <div class="concepts">
+        <div class="concept"><div class="concept-head"><div class="concept-num">88 / 100</div><div class="concept-icon">🌀</div></div><h4>AI Hallucination</h4><p class="def">When a model confidently invents facts. The single biggest problem in production LLM use today.</p><div class="why"><strong>Why it matters</strong>Lawyers have filed cases citing fake cases. Doctors have been given fake medical references. Hallucinations make LLMs dangerous when used naively.</div><p class="example">A New York lawyer used ChatGPT for legal research. It invented six fake cases. He was sanctioned. Real consequence, real lawyer, real fine.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">89 / 100</div><div class="concept-icon">⚖️</div></div><h4>Algorithmic Bias</h4><p class="def">When a system systematically disadvantages certain groups because of skewed training data, design choices or feedback loops.</p><div class="why"><strong>Why it matters</strong>AI doesn't just reflect bias — it can amplify it, at scale, invisibly. From hiring tools to medical risk scores, biased AI causes real harm.</div><p class="example">Amazon's AI hiring tool down-ranked resumes containing the word "women's" (e.g. "women's chess club"). It learned from 10 years of male-dominated hires.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">90 / 100</div><div class="concept-icon">🎯</div></div><h4>AI Alignment</h4><p class="def">The research problem of making powerful AI do what we actually want — including what we mean but didn't say. The hardest problem in AI safety.</p><div class="why"><strong>Why it matters</strong>As AI gets more capable, the cost of misalignment grows. A model that pursues the wrong goal at scale can cause catastrophic harm.</div><p class="example">The "paperclip maximiser" thought experiment: an AI told to make paperclips might convert the entire planet into paperclip factories. The problem isn't intelligence, it's alignment.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">91 / 100</div><div class="concept-icon">🔦</div></div><h4>Explainable AI</h4><p class="def">Methods that make a model's decisions interpretable to humans. SHAP, LIME, attention maps, surrogate models.</p><div class="why"><strong>Why it matters</strong>For medical, legal and financial AI, "because the model said so" is not an acceptable answer. Regulators now require explanations.</div><p class="example">A bank denying a loan application must, by law in the EU, explain why. SHAP values let the model say "income was 60% of the reason, debt-to-income 30%".</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">92 / 100</div><div class="concept-icon">🛡️</div></div><h4>AI Safety</h4><p class="def">The broader field studying catastrophic and long-term risks from advanced AI systems. Bio, cyber, autonomy, persuasion.</p><div class="why"><strong>Why it matters</strong>Frontier AI models can now help non-experts build bioweapons, hack systems and run influence operations. That's a new kind of risk.</div><p class="example">A red-team test in 2023 found GPT-4 could walk a non-expert through synthesising a known dangerous compound. The lab changed the model.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">93 / 100</div><div class="concept-icon">🎯</div></div><h4>Adversarial Attack</h4><p class="def">Tiny, crafted perturbations that fool a model. A sticker on a stop sign, a few pixels on a panda, a single character in a prompt.</p><div class="why"><strong>Why it matters</strong>Adversarial attacks expose how fragile models are. They matter for self-driving cars, malware detection, biometric security.</div><p class="example">Place four small black-and-white stickers on a stop sign and a Tesla will read it as a 45 mph sign. Demonstrated in real conditions.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">94 / 100</div><div class="concept-icon">🔒</div></div><h4>Data Privacy</h4><p class="def">What AI learns from your data, who can see it, and what you can do about it. GDPR, CCPA, the new rules.</p><div class="why"><strong>Why it matters</strong>Every AI feature is, secretly, a data question. Your photos train face recognition. Your messages train autocomplete. Your choices train recommenders.</div><p class="example">Italy temporarily banned ChatGPT in 2023 over privacy concerns. The company added age verification, a clear privacy policy, and an opt-out.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">95 / 100</div><div class="concept-icon">📜</div></div><h4>AI Regulation</h4><p class="def">The EU AI Act, US executive orders, India's digital rules, China's generative AI measures. The law catching up to the technology.</p><div class="why"><strong>Why it matters</strong>Every AI product now ships with a legal question attached. "Is this allowed?" depends on country, use case and risk level.</div><p class="example">The EU AI Act (2024) bans social scoring and real-time biometric ID by default. The first comprehensive AI law in history.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">96 / 100</div><div class="concept-icon">🌟</div></div><h4>Artificial General Intelligence</h4><p class="def">Hypothetical AI that matches or exceeds humans across every cognitive task. The field's north star.</p><div class="why"><strong>Why it matters</strong>Every major lab is publicly working toward AGI. Whether it's 5 years or 50 away, the goal shapes billions of dollars of investment today.</div><p class="example">Sam Altman, Demis Hassabis and Dario Amodei — the CEOs of OpenAI, DeepMind and Anthropic — all believe AGI is plausible within a decade. So does the US government.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">97 / 100</div><div class="concept-icon">🧠</div></div><h4>Superintelligence</h4><p class="def">The further step beyond AGI: an intellect vastly smarter than the best human in every field. Science, strategy, social manipulation — all.</p><div class="why"><strong>Why it matters</strong>If we build it, we need to have aligned it. That's a research problem no one has solved. The stakes are existential by definition.</div><p class="example">Nick Bostrom's "Superintelligence" (2014) put this question on the mainstream map. It's now a serious academic and policy field.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">98 / 100</div><div class="concept-icon">🚀</div></div><h4>Singularity</h4><p class="def">The theoretical point where technological growth becomes runaway and unpredictable — driven by AI improving AI.</p><div class="why"><strong>Why it matters</strong>Whether you think the singularity is near, far or never, the term shapes how seriously people take long-term AI risk.</div><p class="example">Ray Kurzweil predicts 2045 as the singularity date. Most AI researchers think it's later or won't happen. The debate itself is the story.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">99 / 100</div><div class="concept-icon">⚛️</div></div><h4>Quantum AI</h4><p class="def">Where quantum computing meets machine learning. Promises speed-ups for certain problems; mostly still research.</p><div class="why"><strong>Why it matters</strong>Some problems — drug discovery, materials science, optimisation — are naturally quantum. AI that uses quantum computers could tackle them.</div><p class="example">Google's quantum chip solved a problem in 5 minutes that would take a classical supercomputer 10 septillion years. That kind of speed could transform AI training.</p></div>
+        <div class="concept"><div class="concept-head"><div class="concept-num">100 / 100</div><div class="concept-icon">🧬</div></div><h4>Neuromorphic Computing</h4><p class="def">Hardware that mimics how biological brains work — spiking, event-driven, ultra-low-power. The long-term bet.</p><div class="why"><strong>Why it matters</strong>Today's GPUs waste enormous energy running neural networks. Neuromorphic chips run them with brain-like efficiency.</div><p class="example">Intel's Hala Point, the largest neuromorphic system, runs 1.15 billion neurons with 100x less energy than a GPU cluster. The future of edge AI.</p></div>
+      </div>
+    </div>
+
+    <div class="cta-banner">
+      <h3>Want the whole thing as a beautifully designed PDF?</h3>
+      <p>142 pages · 100 concepts · 8 categories · PDF + ePub + Web reader</p>
+      
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 100 AI Concepts Encyclopedia. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .concept{scroll-margin-top:140px}
+  .concept-index{margin:0 0 44px;padding:22px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}
+  .concept-index-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:800;margin-bottom:16px}
+  .concept-index-group{margin-top:18px}
+  .concept-index-group h4{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-2);margin-bottom:10px}
+  .concept-index-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+  .concept-index-btn,.concept-action-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:rgba(124,92,255,.08);color:var(--text);font-size:12px;font-weight:700;transition:all .2s}
+  .concept-index-btn:hover,.concept-action-btn:hover{transform:translateY(-2px);border-color:rgba(124,92,255,.45);background:rgba(124,92,255,.16)}
+  .concept-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+  .concept-action-btn{background:var(--grad-cta);color:var(--cta-text);border-color:rgba(255,255,255,.2)}
+  @media(max-width:560px){.concept-index-grid{grid-template-columns:1fr}.concept-actions{flex-direction:column}.concept-action-btn{width:100%}}
+</style>
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
+  },{threshold:.12, rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const categories = [...document.querySelectorAll('.cat-section')];
+  const cards = [...document.querySelectorAll('.concept')];
+  const toc = document.querySelector('.sticky-toc');
+
+  const scrollToEl = (el)=>{
+    if(!el) return;
+    window.scrollTo({top:el.getBoundingClientRect().top + window.scrollY - 140,behavior:'smooth'});
+  };
+
+  if(toc && !document.querySelector('#concept-index')){
+    const index = document.createElement('div');
+    index.className = 'concept-index';
+    index.id = 'concept-index';
+    const title = document.createElement('div');
+    title.className = 'concept-index-title';
+    title.textContent = '100 Concepts — Quick Index';
+    index.appendChild(title);
+
+    categories.forEach(cat=>{
+      const group = document.createElement('div');
+      group.className = 'concept-index-group';
+      const heading = document.createElement('h4');
+      heading.textContent = cat.querySelector('.cat-header h3')?.textContent || 'Category';
+      group.appendChild(heading);
+      const grid = document.createElement('div');
+      grid.className = 'concept-index-grid';
+
+      cat.querySelectorAll('.concept').forEach(card=>{
+        const numText = card.querySelector('.concept-num')?.textContent || '';
+        const num = (numText.match(/\d+/)||[''])[0];
+        const name = card.querySelector('h4')?.textContent || 'Concept';
+        const id = 'concept-' + num.padStart(2,'0');
+        card.id = id;
+
+        const link = document.createElement('a');
+        link.className = 'concept-index-btn';
+        link.href = '#' + id;
+        link.textContent = num.padStart(2,'0') + ' · ' + name;
+        link.addEventListener('click', e=>{e.preventDefault();scrollToEl(card);});
+        grid.appendChild(link);
+
+        if(!card.querySelector('.concept-actions')){
+          const actions = document.createElement('div');
+          actions.className = 'concept-actions';
+          const explore = document.createElement('a');
+          explore.className = 'concept-action-btn';
+          explore.href = '#' + id;
+          explore.textContent = 'Explore this concept →';
+          explore.addEventListener('click', e=>{e.preventDefault();scrollToEl(card);});
+          actions.appendChild(explore);
+
+          const back = document.createElement('a');
+          back.className = 'concept-index-btn';
+          back.href = '#concept-index';
+          back.textContent = '← Back to Concepts';
+          back.addEventListener('click', e=>{e.preventDefault();scrollToEl(index);});
+          actions.appendChild(back);
+          card.appendChild(actions);
+        }
+
+        const hue = (Number(num)||1) * 37 % 360;
+        card.style.background = 'linear-gradient(135deg, hsla(' + hue + ',70%,20%,.92), var(--panel-2))';
+      });
+      group.appendChild(grid);
+      index.appendChild(group);
+    });
+    toc.parentNode.insertBefore(index,toc.nextSibling);
+  }
+
+  document.querySelectorAll('.toc-items a').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      scrollToEl(t);
+    });
+  });
+</script>
+<script src="https://assets.flexifunnels.com/js/ft-control.js"></script><noscript><input type="checkbox" id="noscript-close" style="display: none;"><div id="noscript-overlay"></div><div id="noscript-popup"><label for="noscript-close" id="close-noscript-popup">X</label>⚠️ JavaScript is disabled in the browser!<br> Please enable it for a better experience.</div></noscript></body>
+</html>
